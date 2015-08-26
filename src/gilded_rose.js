@@ -8,13 +8,7 @@ var items = []
 
 function update_quality() {
   for (var i = 0; i < items.length; i++) {
-    if (items[i].name != 'Aged Brie' && items[i].name != 'Backstage passes to a TAFKAL80ETC concert' && items[i].quality > 0) {
-      if (items[i].name != 'Sulfuras, Hand of Ragnaros') {
-          items[i].quality = items[i].quality - 1
-      } 
-    }
-    
-    else {
+    if (items[i].name == 'Aged Brie' || items[i].name == 'Backstage passes to a TAFKAL80ETC concert' || items[i].name == 'Sulfuras, Hand of Ragnaros' || items[i].quality <= 0) {
       if (items[i].quality < 50) {
         items[i].quality = items[i].quality + 1
         if (items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
@@ -30,7 +24,14 @@ function update_quality() {
           }
         }
       }
+    } 
+    else {
+      items[i].quality = items[i].quality - 1
+      if (items[i].name == 'Conjured Mana Cake'){
+        items[i].quality = items[i].quality - 1
+      }
     }
+  
     if (items[i].name != 'Sulfuras, Hand of Ragnaros') {
       items[i].sell_in = items[i].sell_in - 1;
     }
